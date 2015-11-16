@@ -14,27 +14,35 @@ header:
 
 # Introduction
 
-ES6 (appelé aussi ES2015) est la nouvelle version majeure du langage javascript. Elle apporte un grand nombre de fonctionnalités toutes plus utiles les unes que les autres, si on sait faire le tri parmi elles. Je vais me limiter pour cet article à vous exposer les nouveautés concernant les variables, leurs cas d'utilisation, ainsi que leurs pièges et leur subtilités.
+ES6 (appelé aussi ES2015) est la nouvelle version majeure du langage javascript. Elle apporte un grand nombre de fonctionnalités toutes plus utiles les unes que les autres, si toutefois on sait faire le tri parmi elles. Je vais me limiter pour cet article à vous exposer les nouveautés concernant les variables : leurs déclarations, leurs cas d'utilisation, ainsi que leurs pièges et leurs subtilités.
 
 # let, const, var
 
-ES6 introduit 2 nouvelles manières de déclarer vos variables: `const`, qui permet de déclarer des variables qui peuvent être assignées une seule et unique fois et qui sont block scopées ; et `let`, qui est l'équivalent de `var`, mais version block scopée. `var` est toujours disponible à l'utilisation, même si ses cas d'usages sont extrêmement illimités voire inexistants.
-
-```javascript
-function fn() {
-  let foo = true
-  if(true) {
-    const foo = "bar"
-    console.log(foo) // "bar"
-  }
-  console.log(foo) // true
-  return foo
-}
-```
+ES6 introduit 2 nouvelles manières de déclarer vos variables: `const`, qui permet de déclarer des variables qui peuvent être assignées une seule et unique fois et qui sont block scopées ; et `let`, qui est l'équivalent de `var`, mais version block scopée. `var` est toujours disponible à l'utilisation, même si ses cas d'usages sont extrêmement limités voire inexistants.
 
 ## const
 
-`const` vous permet donc de déclarer une variable block scopée à assignation unique. Ne vous méprenez pas si vous lisez le terme constante pour évoquer `const`, ce ne sont pas des vraies constantes au sens valeur de la variable.
+`const` vous permet donc de déclarer une variable block scopée à assignation unique. Ne vous méprenez pas si vous lisez le terme constante pour évoquer `const`, ce ne sont pas des vraies constantes au sens valeur, mais des constantes au sens référence.
+
+```javascript
+function fn(arg) {
+  const foo = "bar"
+  foo = "baz" // TypeError
+
+  const arg = "argument" // SyntaxError
+
+  const bar // SyntaxError
+
+  const scope = "parent"
+  if(true) {
+    const scope = "child"
+    console.log(scope) // "child"
+  }
+  console.log(scope) // "parent"
+}
+```
+
+## let
 
 ## Utilisations, erreurs et pièges
 
