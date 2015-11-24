@@ -176,11 +176,10 @@ test("PageContainer is properly rendered", (t) => {
 These tests are the minimum coverage to ensure you don't break anything when you work
 on your component.
 
-As you can see, tests here are pretty easy to write & straightforward.  
-**The interesting part is that you don't compare using strings.
-You can use real React components.**
+As you can see, tests are straightforward and easy to write.  
+You just expect some JSX, which is what you implemented.
 
-You can easily run this full example by getting it from this repository:
+Run this full example by getting it from this repository:
 
 [github.com/MoOx/react-component-unit-testing-example](https://github.com/MoOx/react-component-unit-testing-example)
 
